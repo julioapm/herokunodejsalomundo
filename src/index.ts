@@ -2,7 +2,7 @@ import express, {Request, Response, NextFunction} from 'express';
 import { json } from 'body-parser';
 
 const app = express();
-const port = 3000;
+const port = 5000;
 
 app.use(consoleLogger);
 app.use(json());
@@ -29,7 +29,7 @@ app.get('/erro', (req, res) => {
     throw new Error('Erro inesperado');
 });
 
-const server = app.listen(port, () => {
+const server = app.listen(process.env.PORT||port, () => {
     console.log(`Express na porta ${port}`);
 });
 
